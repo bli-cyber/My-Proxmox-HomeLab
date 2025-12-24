@@ -1,0 +1,29 @@
+downlaod and upload ubuntu serv 24.04 iso file to my local server.
+created a ubuntu serv vm w/ 10gb ram and used nvme as storage
+followed instructions on linux for setup + ssh selected.
+linux loaded, went back to proxmox>vm>hardware> found and added pci device of my intel CoffeeLake 630 IGPU
+also removed bootable device from cd/dvd drive
+started linux again
+once linux vm loaded, ran: 
+```
+sudo apt update
+sudo apt upgrade -y
+```
+
+
+i downloaded curl to download docker
+```
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
+```
+
+I ran following commands to manage docker as non-root in the group
+'''
+sudo usermod -aG docker $USER
+newgrp docker
+'''
+
+i also need to mount the /data to the vm
+
+I checked on /dev/dri and made sure card0 card1 and espeically renderD128 is found.
+i ran sudo apt install intel-gpu-tools to download package. this package helps determine the resources used for transcoding later.M
