@@ -23,7 +23,8 @@ To re-format the USB along with the Proxmox ISO file, under "Device", select the
 
 <img width="478" height="585" alt="image" src="https://github.com/user-attachments/assets/e3e3922b-dfb1-4e42-ae2e-be3db977f8af" />
 
-**For the install you'd essentially want to select the option to boot up the USB flash drive over the current bootable set up, which im not going to go over. **
+> [!NOTE]
+> For the install you'd essentially want to select the option to boot up the USB flash drive over the current bootable set up, which im not going to go over.
 
 Once I got Proxmox booted up, I followed the instructions on each page. One thing I kept in mind was where I wanted the OS to be installed (which I obviously selected the NVMe storage I had for faster booting). As you follow the instructions, be aware of your current interal networking set up. You want to note what your current private IP you are using. For me, I configured my private network using a 10.0.0.0/24 subnet. At the end of this, you should be able to install Proxmox on the selected storage space and remove the USB flash drive. You should be able to log in with the link via your web browser from any device in your internal private network.
 
