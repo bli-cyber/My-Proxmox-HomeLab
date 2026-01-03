@@ -28,4 +28,17 @@ To re-format the USB along with the Proxmox ISO file, under "Device", select the
 
 Once I got Proxmox booted up, I followed the instructions on each page. One thing I kept in mind was where I wanted the OS to be installed (which I obviously selected the NVMe storage I had for faster booting). As you follow the instructions, be aware of your current interal networking set up. You want to note what your current private IP you are using. For me, I configured my private network using a 10.0.0.0/24 subnet. At the end of this, you should be able to install Proxmox on the selected storage space and remove the USB flash drive. You should be able to log in with the link via your web browser from any device in your internal private network.
 
+When I got into my local Proxmox web GUI, the first thing I did was remove any subscription based and disabled and enterprise or payment features that it supported. I simply went to "Repositories" section and disabled any of the following repositories I didnt need.
 
+From there, I was able to start off and create my very own LXC! I learned an LXC is a lightweight linux container that can isoloate apps, which can improve efficeincy compared to an actual VM. A VM (virtual machine) is a literal virtual computer that acts as a separate computer, where there can be multiple choices of OSes to choose from. In this case, I created an LXC purely for fileshare management and a VM to host all my media - which would include docker instances that will run in the background for automation.
+
+Firstly, we create an LXC... I've made it extremely light weight with 1 core and 1Gb of memory since this is only meant for fileshare purposes. I also mounted the HDD that I want to use as storage to a specific file (in this case it would be /data), where I would then install Samba (SMB - Server Message Block) to complete all the fileshare for me.
+
+When creating a new instance, always do the following code:
+```
+sudo apt update && sudo apt upgrade -y
+```
+To install samba:
+```
+sudo apt install samba
+```
