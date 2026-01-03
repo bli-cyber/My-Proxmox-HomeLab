@@ -42,7 +42,7 @@ To install samba:
 ```
 sudo apt install samba
 ```
-Once this was completed, I want to set up a static IP for the LXC to prevent the IP from releasing/renewing. You can search the current IP via this command and make the adjustments on the "Network" tab via the LXC we've created
+Once this was completed, I want to **set up a static IP** for the LXC to prevent the IP from releasing/renewing. You can search the current IP via this command and make the adjustments on the **"Network" tab** via the LXC we've created.
 ```
 ip a
 ```
