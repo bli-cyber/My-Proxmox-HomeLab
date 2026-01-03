@@ -32,6 +32,8 @@ When I got into my local Proxmox web GUI, the first thing I did was remove any s
 
 From there, I was able to start off and create my very own LXC! I learned an LXC is a lightweight linux container that can isoloate apps, which can improve efficeincy compared to an actual VM. A VM (virtual machine) is a literal virtual computer that acts as a separate computer, where there can be multiple choices of OSes to choose from. In this case, I created an LXC purely for fileshare management and a VM to host all my media - which would include docker instances that will run in the background for automation.
 
+# LXC Set up
+
 Firstly, we create an LXC... This LXC will be using the Ubuntu 24.04 CT template. I've made it extremely light weight with 1 core and 1Gb of memory since this is only meant for fileshare purposes and used my NVMe SSD as the boot disk (it was only 32Gb). For the network portion, I chose dynamic for now so my router can automatically assign a random private IP to the LXC. I also mounted the HDD that I want to use as storage to a specific file (in this case it would be /data), where I would then install Samba (SMB - Server Message Block) to complete all the fileshare for me.
 
 When creating a new instance, always do the following code:
