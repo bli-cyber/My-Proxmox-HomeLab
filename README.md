@@ -122,3 +122,24 @@ Samba Configuration
    read only = no
    guest ok = no
 ```
+Setting up my new samba password for log in purposes.
+
+```
+sudo smbpasswd -a brian
+```
+Setting up autostarting the services if a reboot ever occurs
+```
+sudo systemctl enable smbd nmbd
+sudo systemctl restart smbd nmbd
+```
+Allowing firewall rules for Samba. (Please note that Samba requires port 137/udp, 138/udp, 139/tcp, 445/tcp) - You could also just type in the following command to enable them and check their status:
+```
+sudo ufw allow Samba
+sudo ufw status
+```
+I also wanted to set this up on Windows 11 Fileshare directory. To do this, all I have to do is install a package with the following command:
+```
+sudo apt install wsdd
+```
+From there, I could easily type in \\10.0.0.x to locate my fileshare via my Windows 11 Home PC
+<img width="1156" height="631" alt="image" src="https://github.com/user-attachments/assets/bd8c610c-d484-4109-8719-da40285a8e74" />
