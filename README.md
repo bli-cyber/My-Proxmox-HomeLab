@@ -91,7 +91,7 @@ Samba Configuration
    hosts deny = 0.0.0.0/0
    client min protocol = SMB3
    client max protocol = default
-#default should be using v3_11
+# the default is equal to Samba v3_11
 #   local master = yes
 #   os level = 255
 #   preferred master = yes
