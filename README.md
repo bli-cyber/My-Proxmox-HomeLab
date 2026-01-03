@@ -47,14 +47,20 @@ ip a
 We can create our fileshare directory here and also add user (it will provide a prompt to input a password and etc):
 ```
 sudo mkdir data
+sudo mkdir personal
 adduser brian
 adduser brian sudo
 su brian
 ```
+> [!note]
+> The personal directory is just for me to store and share personal data. It's completely irrelevant from the media server that I am creating.
+
 I created the share directory above, so now we just need  to set up permissiosn
 ```
 sudo chmod -R 0774 /data
+sudo chmod -R 0774 /personal
 sudo chown -R brian:brian /data
+sudo chown -R brian:brian /personal
 ```
 > [!NOTE]
 > You can learn more about permissions on https://www.redhat.com/en/blog/linux-file-permissions-explained. It can help explain what the numbers represent and how it is used to set up types of permissions for user, group, others. More info is found via the link provided.
