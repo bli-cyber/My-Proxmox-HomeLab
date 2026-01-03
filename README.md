@@ -40,15 +40,78 @@ When creating a new instance, always do the following code:
 ```
 sudo apt update && sudo apt upgrade -y
 ```
-To install samba:
-```
-sudo apt install samba
-```
 Once this was completed, I want to **set up a static IP** for the LXC to prevent the IP from releasing/renewing. You can search the current IP via this command and make the adjustments on the **"Network" tab** via the LXC we've created.
 ```
 ip a
 ```
-We can create our fileshare directory here:
+We can create our fileshare directory here and also add user (it will provide a prompt to input a password and etc):
 ```
 sudo mkdir data
+adduser brian
+adduser brian sudo
+su brian
+```
+I created the share directory above, so now we just need  to set up permissiosn
+```
+sudo chmod -R 0774 /data
+sudo chown -R brian:brian /data
+```
+> [!NOTE]
+> You can learn more about permissions on https://www.redhat.com/en/blog/linux-file-permissions-explained. It can help explain what the numbers represent and how it is used to set up types of permissions for user, group, others. More info is found via the link provided.
+
+To install samba:
+```
+sudo apt install samba
+```
+Creating a backup of the default samba configuration:
+```
+cd /etc/samba
+sudo mv smb.conf smb.conf.old
+```
+Editing the Samba configuration file. Here is the file I've ended up using within the configs.
+```
+sudo nano smb.conf
+```
+Samba Configuration
+```
+[global]
+   server string = filestorage
+   workgroup = WORKGROUP
+   security = user
+   map to guest = Bad User
+   name resolve order = bcast host
+   hosts allow = 10.0.0.0/24
+   hosts deny = 0.0.0.0/0
+   client min protocol = SMB3
+   client max protocol = default
+#default should be using v3_11
+#   local master = yes
+#   os level = 255
+#   preferred master = yes
+
+[data]
+   path = /data
+   force user = brian
+   force group = brian
+   create mask = 0774
+   force create mode = 0774
+   directory mask = 0775
+   force directory mode = 0775
+   browseable = yes
+   writable = yes
+   read only = no
+   guest ok = no
+
+[personal]
+   path = /personal
+   force user = brian
+   force group = brian
+   create mask = 0774
+   force create mode = 0774
+   directory mask = 0775
+   force directory mode = 0775
+   browseable = yes
+   writable = yes
+   read only = no
+   guest ok = no
 ```
