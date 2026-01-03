@@ -59,6 +59,7 @@ sudo chown -R brian:brian /data
 > [!NOTE]
 > You can learn more about permissions on https://www.redhat.com/en/blog/linux-file-permissions-explained. It can help explain what the numbers represent and how it is used to set up types of permissions for user, group, others. More info is found via the link provided.
 
+# Samba Set up
 To install samba:
 ```
 sudo apt install samba
