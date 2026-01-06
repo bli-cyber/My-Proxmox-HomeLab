@@ -141,5 +141,5 @@ I also wanted to set this up on Windows 11 Fileshare directory. To do this, all 
 ```
 sudo apt install wsdd
 ```
-From there, I could easily type in \\10.0.0.x to locate my fileshare via my Windows 11 Home PC
+From there, I could easily type in \\10.0.0.x to locate my fileshare via my Windows 11 Home PC. It's going to be different completing this set up via another Linux machine. I had to create and mount the directory to establish a connection to the local master.
 <img width="1156" height="631" alt="image" src="https://github.com/user-attachments/assets/bd8c610c-d484-4109-8719-da40285a8e74" />
