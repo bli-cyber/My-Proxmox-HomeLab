@@ -143,3 +143,5 @@ sudo apt install wsdd
 ```
 From there, I could easily type in \\10.0.0.x to locate my fileshare via my Windows 11 Home PC. It's going to be different completing this set up via another Linux machine. I had to create and mount the directory to establish a connection to the local master.
 <img width="1156" height="631" alt="image" src="https://github.com/user-attachments/assets/bd8c610c-d484-4109-8719-da40285a8e74" />
+
+I found that working on Samba servers can be quite finicky, so an alternative would be to bypass creating a file storage LXC in general and implementing the mount directly to the VM for seamless integration.
